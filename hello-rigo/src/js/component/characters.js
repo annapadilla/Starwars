@@ -3,13 +3,13 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 const Characters = () => {
 	return (
-		<div className="container">
-			<Context.Consumer>
-				{({ store, actions }) => {
-					return store.characters.map((item, index) => {
-						return (
-							<div key={index} className="card mb-3">
-								<div className="card col-sm">
+		<div className="scroller">
+			<div className="card-columns d-flex d-flex flex-row flex-nowrap">
+				<Context.Consumer>
+					{({ store, actions }) => {
+						return store.characters.map((item, index) => {
+							return (
+								<div key={index} className="card m-3">
 									<img
 										className="card-img-top"
 										src="https://starwarsblog.starwars.com/wp-content/uploads/2015/10/tfa_poster_wide_header-1536x864-959818851016.jpg"
@@ -20,18 +20,22 @@ const Characters = () => {
 									<div className="card-body">{"Hair Color: " + item.hair_color}</div>
 									<div className="card-body">{"Eye Color: " + item.eye_color}</div>
 									<div className="card-footer bg-white">
-										<Link to={"/single-characters/" + index + "/" + item.name}>
+										<Link to={"/single-people/" + index + "/" + item.name}>
 											<button className="btn btn-success">Details</button>
 										</Link>
-										<button className="far fa-heart float-right text-warning" />
+										<button
+											onClick={() => actions.markAsFavorite(item.name)}
+											className="far fa-heart float-right text-warning"
+										/>
 									</div>
 								</div>
-							</div>
-						);
-					});
-				}}
-			</Context.Consumer>
+							);
+						});
+					}}
+				</Context.Consumer>
+			</div>
 		</div>
+
 		/*	<Context.Consumer>
 			{({ store, actions }) => {
 				return store.characters.map((item, index) => {

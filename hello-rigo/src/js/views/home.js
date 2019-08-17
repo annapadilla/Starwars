@@ -8,7 +8,12 @@ export class Home extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Characters />
+				<div className="scrolling-wrapper">
+					<Characters />
+				</div>
+				<div className="scrolling-wrapper">
+					<Planets />
+				</div>
 			</React.Fragment>
 		);
 	}

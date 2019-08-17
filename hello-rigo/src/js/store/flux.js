@@ -3,7 +3,8 @@ const getState = ({ getStore, setStore }) => {
 		store: {
 			characters: [],
 			planets: [],
-			favorite: []
+			favorite: [],
+			elementId: []
 		},
 
 		actions: {
@@ -25,14 +26,20 @@ const getState = ({ getStore, setStore }) => {
 					.catch(err => console.log(error));
 				//here you fetch the planets and put them in to store
 			},
-			markAsFavorite: elementId => {
+			markAsFavorite: name => {
 				//here you add the character or planet to favorite list
+				console.log("Name: ", name);
+				const store = getStore();
+				setStore({ favorite: store.favorite.concat(name) });
 			},
-			removeFavorites: elementId => {
-				//here you remove character or planet to favoritre list
+			removeFavorites: name => {
+				console.log("X", name);
+				const store = getStore();
+				debugger;
+				setStore({ favorite: store.favorite.filter(favorite => favorite !== name) });
 			}
+			//here you remove character or planet to favoritre list
 		}
 	};
 };
-
 export default getState;

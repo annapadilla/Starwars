@@ -9,9 +9,12 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Navbarcharacters } from "./component/navbarcharacters";
+import { Navbarplanets } from "./component/navbarplanets";
 import { SingleCharacter } from "./component/singleCharacter";
 import { SinglePlanet } from "./component/singlePlanet";
 import { Footer } from "./component/footer";
+import Planets from "./component/planets";
+import Characters from "./component/characters";
 
 //create your first component
 export class Layout extends React.Component {
@@ -25,22 +28,14 @@ export class Layout extends React.Component {
 				<BrowserRouter basename={basename}>
 					<ScrollToTop>
 						<Navbar />
-						<Navbarcharacters />
+
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route path="/demo" component={Demo} />
-							<Route path="/single/:theid" component={Single} />
+							<Route path="/single/:theid" component={SingleCharacter} />
 							<Route path="/single-people/:theindex/:thename" component={SingleCharacter} />
+							<Route path="/single-planet/:theindex/:thename" component={SinglePlanet} />
 							<Route render={() => <h1>Not found!</h1>} />
 						</Switch>
-						<Switch>
-							<Route exact path="/" component={Home} />
-							<Route path="/demo" component={Demo} />
-							<Route path="/single/:theid" component={Single} />
-							<Route path="/single-planets/:theindex/:thepopulation" component={SinglePlanet} />
-							<Route render={() => <h1>Not found!</h1>} />
-						</Switch>
-						<Footer />
 					</ScrollToTop>
 				</BrowserRouter>
 			</div>

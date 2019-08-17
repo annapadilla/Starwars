@@ -17,3 +17,12 @@
    width: 5000px;
    height: 500px;
 }
+
+.card-columns{
+    width: 350rem;
+    overflow: scroll;
+}
+.scroller{
+   overflow-x: auto;
+   white-space: nowrap;
+}
